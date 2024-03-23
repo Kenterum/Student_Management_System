@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Course</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .update-form {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .update-form p {
+            margin: 10px 0;
+        }
+        .update-form input[type="text"],
+        .update-form textarea,
+        .update-form input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .update-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .update-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .cancel-button {
+            background-color: #777;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .cancel-button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="update-form">
+    <h2>Update Course</h2>
+    <form th:action="@{/courses/update/{id}(id=${course.id})}" th:object="${course}" method="post">
+        <p>Name: <input type="text" th:field="*{name}" required /></p>
+        <p>Instructor: <input type="text" th:field="*{instructor}" required /></p>
+        <p>Course Code: <input type="text" th:field="*{courseCode}" required /></p>
+        <p>Description: <textarea th:field="*{description}" required></textarea></p>
+        <p>Credit Hours: <input type="number" th:field="*{creditHours}" required /></p>
+        <p><input type="submit" value="Update" /> <a th:href="@{/courses/index}" class="cancel-button">Cancel</a></p>
+    </form>
+</div>
+</body>
+</html>

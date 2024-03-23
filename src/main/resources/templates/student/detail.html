@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .details-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .student-detail {
+            margin-bottom: 10px;
+        }
+        .student-detail label {
+            font-weight: bold;
+        }
+        .student-detail span {
+            margin-left: 5px;
+        }
+        .courses-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .courses-list li {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #555;
+            margin-top: 20px;
+        }
+        .back-link:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="details-container">
+    <h2>Student Details</h2>
+    <div class="student-detail">
+        <label>Name:</label> <span th:text="${student.name}"></span>
+    </div>
+    <div class="student-detail">
+        <label>Email:</label> <span th:text="${student.email}"></span>
+    </div>
+    <div class="student-detail">
+        <label>Date of Birth:</label> <span th:text="${student.dateOfBirth}"></span>
+    </div>
+    <div class="student-detail">
+        <label>Address:</label> <span th:text="${student.address}"></span>
+    </div>
+    <div class="student-detail">
+        <h3>Enrolled Courses:</h3>
+        <ul class="courses-list">
+            <li th:each="course : ${student.courses}" th:text="${course.name}"></li>
+        </ul>
+    </div>
+    <a href="/students/index" class="back-link">Back to list</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .update-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .update-form input[type="text"],
+        .update-form input[type="email"],
+        .update-form input[type="date"],
+        .update-form textarea,
+        .update-form input[type="number"],
+        .update-form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .update-form button[type="submit"] {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .update-form button[type="submit"]:hover {
+            background-color: #007B9E;
+        }
+        .cancel-link {
+            color: #777;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .cancel-link:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="update-form">
+    <h2>Update Student</h2>
+    <form th:action="@{/students/update/{id}(id=${student.id})}" th:object="${student}" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required/>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required/>
+        </div>
+        <div>
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" required/>
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" th:field="*{address}"/>
+        </div>
+        <div>
+            <label for="major">Major:</label>
+            <input type="text" id="major" th:field="*{major}" required/>
+        </div>
+        <div>
+            <label>Courses:</label>
+            <div th:each="course : ${allCourses}">
+                <input type="checkbox" name="courseIds" th:value="${course.id}"
+                       th:checked="${#lists.contains(student.courses, course)}" />
+                <span th:text="${course.name}"></span><br/>
+            </div>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+    <a href="/students/index" class="cancel-link">Cancel</a>
+</div>
+</body>
+</html>

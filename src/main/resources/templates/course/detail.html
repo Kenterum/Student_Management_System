@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .details {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .details p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .details label {
+            font-weight: bold;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #555;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="details">
+    <h2>Course Details</h2>
+    <p><label>Name:</label> <span th:text="${course.name}"></span></p>
+    <p><label>Instructor:</label> <span th:text="${course.instructor}"></span></p>
+    <p><label>Course Code:</label> <span th:text="${course.courseCode}"></span></p>
+    <p><label>Description:</label> <span th:text="${course.description}"></span></p>
+    <p><label>Credit Hours:</label> <span th:text="${course.creditHours}"></span></p>
+    <a href="/courses/index" class="back-button">Back to List</a>
+</div>
+</body>
+</html>
