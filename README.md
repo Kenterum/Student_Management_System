@@ -1,4 +1,3 @@
-```markdown
 # Spring Boot Student-Course Management System
 
 This project is a web application built with Spring Boot, designed to manage students and their course enrollments. It supports CRUD  operations for both students and courses. 
